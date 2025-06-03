@@ -3,6 +3,7 @@ vim.api.nvim_create_autocmd("VimLeave", {
   pattern = "*",
   command = "set guicursor=a:ver25",
 })
+vim.opt.wrap = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
