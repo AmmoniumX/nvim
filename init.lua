@@ -19,3 +19,4 @@ vim.api.nvim_create_autocmd("BufWritePost", {
       vim.cmd("!ruff format %")
   end,
 })
+vim.lsp.inlay_hint.enable(true)

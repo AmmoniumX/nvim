@@ -22,33 +22,33 @@ return {
         },
       })
 
-      -- Set up Mason first
+      -- Set up Mason
       require("mason").setup()
       
-      -- Set up Mason-LSPConfig with servers to install
+      -- Set up Mason-LSPConfig and servers
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true)
+      end
       require("mason-lspconfig").setup({
-        ensure_installed = {
-          "ruff",
-          "rust_analyzer",
-          "pyright",
-        },
-        handlers = {
-          -- The default handler that will be used for all LSP servers
-          function(server_name)
-            require("lspconfig")[server_name].setup({
-              capabilities = capabilities,
-            })
-          end,
-          
-          -- You can specify custom handlers for specific servers
-          -- Example:
-          -- ["rust_analyzer"] = function()
-          --   require("lspconfig").rust_analyzer.setup({
-          --     capabilities = capabilities,
-          --     -- Additional settings for rust_analyzer
-          --   })
-          -- end,
+        automatic_enable = true,
+      })
+
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          ["rust-analyzer"] = {
+            checkOnSave = true,
+            inlayHints = {
+              enable = true,
+              bindingModeHints = { enable = true },
+              chainingHints = { enable = true },
+              closingBraceHints = { enable = true },
+              typeHints = { enable = true },
+              parameterHints = { enable = true },
+            },
+          },
         },
       })
 
