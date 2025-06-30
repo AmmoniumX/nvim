@@ -52,6 +52,36 @@ return {
         },
       })
 
+      -- C++ configuration
+      vim.lsp.config("clangd", {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--suggest-missing-includes",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--offset-encoding=utf-16",
+        },
+        init_options = {
+          fallbackFlags = { "-std=c++23" }, -- Set C++23 as the standard
+          clangd = {
+            fallbackFlags = { "-std=c++23" }, -- Redundant but safer for different clangd versions
+          },
+        },
+        settings = {
+          clangd = {
+            arguments = {
+              "--header-insertion=iwyu",
+              "--background-index",
+              "--clang-tidy",
+              "--completion-style=detailed",
+            },
+          },
+        },
+      })
+
    end,
   },
 }
