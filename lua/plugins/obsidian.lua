@@ -15,13 +15,12 @@ return {
     -- Required.
     "nvim-lua/plenary.nvim",
   },
-  opts = {
-    workspaces = {
-      {
-        name = "Obsidian",
-        path = "~/src/Obsidian",
-      },
-    },
-
-  },
+-- opts = {
+--    workspaces = {
+--      {
+--        name = "Obsidian",
+--        path = "~/src/Obsidian",
+--      },
+--    },
+-- },
 }
