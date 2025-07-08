@@ -1,5 +1,6 @@
 require("config.lazy")
-vim.opt.clipboard = "unnamedplus"
+vim.keymap.set({'n', 'v'}, 'y', '"+y', { noremap = true, silent = true })
+vim.keymap.set('n', 'yy', '"+yy', { noremap = true, silent = true })
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.tabstop = 2
