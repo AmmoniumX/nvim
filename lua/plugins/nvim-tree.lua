@@ -7,8 +7,8 @@ return {
   },
   config = function()
     require("nvim-tree").setup {}
-    -- Set keybinding for 'fm' using nvim-tree's built-in API
-    vim.keymap.set('n', '<leader>fm', function()
+    -- Set keybinding for 'fe' using nvim-tree's built-in API
+    vim.keymap.set('n', '<leader>fe', function()
       require('nvim-tree.api').tree.open()
     end, { noremap = true, silent = true })
   end,
