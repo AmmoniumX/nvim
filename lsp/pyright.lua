@@ -1,6 +1,5 @@
 return {
-    -- pyright configuration
-    cmd = { 'pyright-langserver', '--stdio' },
+    cmd = { 'pyright-langserver' },
 
     root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', '.git/' },
 
