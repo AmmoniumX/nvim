@@ -1,4 +1,5 @@
 require("config.lazy")
+require("config.lsp")
 
 vim.opt.clipboard = ''
 vim.opt.number = true
@@ -16,4 +17,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
       vim.cmd("!ruff format %")
   end,
 })
-vim.lsp.inlay_hint.enable(true)
+
+-- Y/P to copy/paste into alternate registers
+-- Normal mode: Yank a line into register z
+vim.keymap.set('n', 'Y', '"zyy', { noremap = true, desc = 'Yank line to register z' })
+
+-- Visual mode: Yank selection into register z
+vim.keymap.set('v', 'Y', '"zy', { noremap = true, desc = 'Yank selection to register z' })
+
+-- Normal mode: Paste from register z after cursor
+vim.keymap.set('n', 'P', '"zp', { noremap = true, desc = 'Paste from register z' })
+
+-- Visual mode: Paste from register z, replacing selection
+vim.keymap.set('v', 'P', '"zp', { noremap = true, desc = 'Paste from register z (visual)' })
