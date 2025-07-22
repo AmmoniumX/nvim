@@ -35,6 +35,7 @@ vim.keymap.set('v', 'P', '"zp', { noremap = true, desc = 'Paste from register z 
 vim.opt.winborder = 'rounded'
 vim.diagnostic.config({
   virtual_text = true,      -- Show diagnostic message as virtual text
+  virtual_lines = true,     -- Show diagnostic message as virtual lines
   signs = true,             -- Show diagnostic signs in the sign column
   underline = true,         -- Underline the text with an error
   update_in_insert = false, -- Don't update diagnostics in insert mode
