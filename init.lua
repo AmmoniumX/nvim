@@ -46,3 +46,4 @@ vim.diagnostic.config({
     prefix = "",            -- No prefix for each diagnostic item
   },
 })
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics in a floating window' })
