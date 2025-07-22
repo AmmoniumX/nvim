@@ -48,3 +48,7 @@ vim.diagnostic.config({
   },
 })
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics in a floating window' })
+
+-- Configure split options
+vim.o.splitright = true
+vim.o.splitbelow = true
