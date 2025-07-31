@@ -38,4 +38,39 @@ vim.diagnostic.config({
     prefix = "",            -- No prefix for each diagnostic item
   },
 })
+
+-- Mappings --
+local bufopts = { noremap=true, silent=true }
+
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics in a floating window' })
+
+-- Go to definition
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+
+-- Go to declaration
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+
+-- Find implementations
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+
+-- Find references
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+
+-- Find type definition
+vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+
+-- Show hover documentation
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+
+-- Rename symbol
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+
+-- Show code actions
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+
+-- Show signature help
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+
+-- Navigate diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.jump, { desc = 'Go to previous diagnostic' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump(1, { float = true }) end, { desc = 'Go to next diagnostic and show float' })
