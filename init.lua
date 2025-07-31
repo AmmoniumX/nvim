@@ -31,23 +31,6 @@ vim.keymap.set('n', 'P', '"zp', { noremap = true, desc = 'Paste from register z'
 -- Visual mode: Paste from register z, replacing selection
 vim.keymap.set('v', 'P', '"zp', { noremap = true, desc = 'Paste from register z (visual)' })
 
--- Configure diagnostics display
-vim.opt.winborder = 'rounded'
-vim.diagnostic.config({
-  virtual_text = true,      -- Show diagnostic message as virtual text
-  virtual_lines = true,     -- Show diagnostic message as virtual lines
-  signs = true,             -- Show diagnostic signs in the sign column
-  underline = true,         -- Underline the text with an error
-  update_in_insert = false, -- Don't update diagnostics in insert mode
-  severity_sort = true,     -- Sort diagnostics by severity
-  float = {
-    border = "rounded",     -- Add border to floating diagnostic window
-    source = "always",      -- Always show source of the diagnostic
-    header = "",            -- No header in the floating diagnostic window
-    prefix = "",            -- No prefix for each diagnostic item
-  },
-})
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics in a floating window' })
 
 -- Configure split options
 vim.opt.splitright = true
