@@ -12,7 +12,7 @@ vim.opt.conceallevel = 1
 
 -- Enable treesitter
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
+  pattern = { 'c', 'cpp', 'python', 'rust', 'lua' },
   callback = function() vim.treesitter.start() end,
 })
 
