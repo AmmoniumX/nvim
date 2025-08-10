@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Configure diagnostics display
 vim.opt.winborder = 'rounded'
 vim.diagnostic.config({
-  virtual_text = true,      -- Show diagnostic message as virtual text
+  virtual_text = false,      -- Show diagnostic message as virtual text
   virtual_lines = true,     -- Show diagnostic message as virtual lines
   signs = true,             -- Show diagnostic signs in the sign column
   underline = true,         -- Underline the text with an error
