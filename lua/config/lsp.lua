@@ -6,6 +6,8 @@
 -- This actually just enables the lsp servers.
 -- The configuration is found in the lsp folder inside the nvim config folder,
 -- so in ~.config/lsp/lua_ls.lua for lua_ls, for example.
+require('lspconfig')
+
 vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls'})
 
 -- Get the language server to recognize the `vim` global
