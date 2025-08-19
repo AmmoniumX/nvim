@@ -22,9 +22,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client:supports_method('textDocument/completion') then
       vim.opt.completeopt = { 'menu', 'menuone','noinsert','fuzzy','popup' }
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-      vim.keymap.set('i', '<C-Space>', function()
-        vim.lsp.completion.get()
-      end)
+
+      -- Windows can't set keymaps to <C-Space>, so it uses <C-b> instead
+      if vim.fn.has('unix') then
+        -- Set key mapping for Linux and macOS
+        vim.keymap.set('i', '<C-Space>', function()
+          vim.lsp.completion.get()
+        end)
+      else
+        -- Set key mapping for Windows
+        vim.keymap.set('i', '<C-b>', function()
+          vim.lsp.completion.get()
+        end)
+      end
     end
   end,
 })
