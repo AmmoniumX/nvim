@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end)
       else
         -- Set key mapping for Windows
-        vim.keymap.set('i', '<C-b>', function()
+        vim.keymap.set('i', '<C-n>', function()
           vim.lsp.completion.get()
         end)
       end
