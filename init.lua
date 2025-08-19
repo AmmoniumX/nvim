@@ -1,5 +1,14 @@
-require("config.lazy")
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Source LSP config
 require("config.lsp")
+
+-- Source plugins
+require("plugins.editor")
+require("plugins.nvim-tree")
+require("plugins.nvim-treesitter")
+require("plugins.telescope")
 
 vim.opt.clipboard = ''
 vim.opt.number = true

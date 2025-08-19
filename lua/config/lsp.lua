@@ -1,4 +1,5 @@
 -- Use default LSP configurations from nvim-lspconfig
+vim.pack.add({{ src = 'https://github.com/neovim/nvim-lspconfig' }})
 require('lspconfig')
 
 vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls'})
