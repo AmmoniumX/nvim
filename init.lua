@@ -5,10 +5,9 @@ vim.g.maplocalleader = ' '
 require("config.lsp")
 
 -- Source plugins
-require("plugins.mini-pairs")
+require("plugins.mini-nvim")
 require("plugins.nvim-tree")
 require("plugins.nvim-treesitter")
-require("plugins.telescope")
 
 vim.opt.clipboard = ''
 vim.opt.number = true
