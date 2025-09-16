@@ -17,6 +17,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.conceallevel = 1
+vim.o.ignorecase = true
 
 -- Enable treesitter
 vim.api.nvim_create_autocmd('FileType', {
