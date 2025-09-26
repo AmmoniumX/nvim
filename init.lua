@@ -12,10 +12,10 @@ require("plugins.nvim-treesitter")
 vim.opt.clipboard = ''
 vim.opt.number = true
 vim.opt.wrap = false
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-vim.opt.softtabstop = 4
+vim.opt.softtabstop = 2
 vim.opt.conceallevel = 1
 vim.o.ignorecase = true
 
@@ -30,6 +30,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.py",
   callback = function()
       vim.cmd("!ruff format %")
+  end,
+})
+
+-- Format C++ files
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.cpp", "*.hpp" },
+  callback = function()
+      vim.cmd("!clang-format --style=llvm -i % ")
   end,
 })
 
