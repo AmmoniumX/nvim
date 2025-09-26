@@ -15,4 +15,6 @@
 - `rust_analyzer`
 - `lua-language-server`
 - `luarocks`
+- `typescript`
+- `typescript-language-server`
 
