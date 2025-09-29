@@ -8,6 +8,7 @@ require("config.lsp")
 require("plugins.mini-nvim")
 require("plugins.nvim-tree")
 require("plugins.nvim-treesitter")
+require("plugins.nvim-gemini-companion")
 
 vim.opt.clipboard = ''
 vim.opt.number = true
