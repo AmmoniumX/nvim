@@ -8,15 +8,15 @@ require("gemini").setup({
     cmds = { "gemini" }
 })
 
-vim.keymap.set('n', '<C-g>', function()
+vim.keymap.set('n', '<leader>gg', function()
     vim.cmd("GeminiToggle")
 end, { desc = 'Toggle Gemini Cli' })
 
-vim.keymap.set('n', '<C-a>', function()
+vim.keymap.set('n', '<leader>ga', function()
     vim.cmd("GeminiAccept")
 end, { desc = 'Accept Gemini Changes' })
 
-vim.keymap.set('n', '<C-d>', function()
+vim.keymap.set('n', '<leader>gr', function()
     vim.cmd("GeminiReject")
 end, { desc = 'Reject Gemini Changes' })
 
