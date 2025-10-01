@@ -1,17 +1,18 @@
 vim.pack.add({
-    { src = 'https://github.com/nvim-mini/mini.nvim' },
+  "https://github.com/folke/snacks.nvim",
 })
-require("mini.pairs").setup()
-require("mini.pick").setup()
+
+local Snacks = require("snacks")
+Snacks.setup()
 
 vim.keymap.set('n', '<leader>ff', function()
-    vim.cmd("Pick files")
+    Snacks.picker.pick("files")
 end, { desc = 'Pick files' })
 
 vim.keymap.set('n', '<leader>fg', function()
-    vim.cmd("Pick grep_live")
+    Snacks.picker.pick("grep")
 end, { desc = 'Live Grep' })
 
 vim.keymap.set('n', '<leader>fb', function()
-    vim.cmd("Pick buffers")
+    Snacks.picker.pick("buffers")
 end, { desc = 'Pick buffers' })

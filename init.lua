@@ -5,7 +5,7 @@ vim.g.maplocalleader = ' '
 require("config.lsp")
 
 -- Source plugins
-require("plugins.mini-nvim")
+require("plugins.snacks")
 require("plugins.nvim-tree")
 require("plugins.nvim-treesitter")
 require("plugins.nvim-gemini-companion")
