@@ -4,7 +4,9 @@ vim.pack.add({
   "https://github.com/folke/snacks.nvim",
 })
 
-require("gemini").setup()
+require("gemini").setup({
+    cmds = { "gemini" }
+})
 
 vim.keymap.set('n', '<C-g>', function()
     vim.cmd("GeminiToggle")
