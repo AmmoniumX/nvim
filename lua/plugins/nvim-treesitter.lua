@@ -1,10 +1,5 @@
-vim.pack.add({{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' }})
--- nvim-treesitter configuration
-require("nvim-treesitter").setup({})
-
-require("nvim-treesitter.configs").setup({
-  ensure_installed = { 'rust', 'cpp', 'c', 'lua' },
-})
+vim.pack.add({{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' }})
+require("nvim-treesitter").install({ 'rust', 'cpp', 'c', 'lua' })
 
 vim.api.nvim_create_autocmd('PackChanged', {
   desc = 'Handle nvim-treesitter updates',
