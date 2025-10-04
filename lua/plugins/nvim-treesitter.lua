@@ -1,4 +1,4 @@
-vim.pack.add({{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', branch = 'main' }})
+vim.pack.add({{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' }})
 -- nvim-treesitter configuration
 require("nvim-treesitter").setup({})
 
