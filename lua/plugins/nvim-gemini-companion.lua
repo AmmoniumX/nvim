@@ -1,5 +1,5 @@
 vim.pack.add({
-  { src = "https://github.com/gutsavgupta/nvim-gemini-companion", version = "dev" },
+  "https://github.com/gutsavgupta/nvim-gemini-companion",
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/folke/snacks.nvim",
 })
