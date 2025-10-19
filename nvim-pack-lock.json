@@ -1,0 +1,18 @@
+{
+  "plugins": {
+    "nvim-gemini-companion": {
+      "rev": "59c05d9"
+    },
+    "nvim-lspconfig": [],
+    "nvim-tree.lua": [],
+    "nvim-treesitter": {
+      "rev": "846d5113",
+      "version": "'main'"
+    },
+    "nvim-web-devicons": [],
+    "plenary.nvim": [],
+    "snacks.nvim": {
+      "rev": "ffff5e0"
+    }
+  }
+}
