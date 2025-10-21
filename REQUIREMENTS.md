@@ -17,4 +17,5 @@
 - `luarocks`
 - `typescript`
 - `typescript-language-server`
+- `intelephense`
 
