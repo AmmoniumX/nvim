@@ -1,18 +1,24 @@
 {
   "plugins": {
     "nvim-gemini-companion": {
-      "rev": "59c05d9"
+      "rev": "bd7489f"
     },
-    "nvim-lspconfig": [],
-    "nvim-tree.lua": [],
+    "nvim-lspconfig": {
+      "rev": "dc7e7c7"
+    },
+    "nvim-tree.lua": {
+      "rev": "1eda256"
+    },
     "nvim-treesitter": {
-      "rev": "846d5113",
+      "rev": "0cfa5994",
       "version": "'main'"
     },
-    "nvim-web-devicons": [],
+    "nvim-web-devicons": {
+      "rev": "8dcb311"
+    },
     "plenary.nvim": [],
     "snacks.nvim": {
-      "rev": "ffff5e0"
+      "rev": "836e073"
     }
   }
 }
