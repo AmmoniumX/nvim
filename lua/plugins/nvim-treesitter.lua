@@ -1,5 +1,5 @@
 vim.pack.add({{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' }})
-require("nvim-treesitter").install({ 'rust', 'cpp', 'c', 'lua' })
+require("nvim-treesitter").install({ 'rust', 'cpp', 'c', 'lua', 'latex', 'css', 'html', 'javascript'})
 
 vim.api.nvim_create_autocmd('PackChanged', {
   desc = 'Handle nvim-treesitter updates',
