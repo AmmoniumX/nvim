@@ -4,13 +4,13 @@
       "rev": "bd7489f"
     },
     "nvim-lspconfig": {
-      "rev": "dc7e7c7"
+      "rev": "effe4bf"
     },
     "nvim-tree.lua": {
-      "rev": "1eda256"
+      "rev": "776a5cd"
     },
     "nvim-treesitter": {
-      "rev": "0cfa5994",
+      "rev": "17885756",
       "version": "'main'"
     },
     "nvim-web-devicons": {
@@ -18,7 +18,7 @@
     },
     "plenary.nvim": [],
     "snacks.nvim": {
-      "rev": "836e073"
+      "rev": "fe7cfe9"
     }
   }
 }
