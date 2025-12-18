@@ -1,24 +1,33 @@
 {
   "plugins": {
     "nvim-gemini-companion": {
-      "rev": "bd7489f"
+      "rev": "bd7489f1196afbb9d1741a5e8e544eb349be7152",
+      "src": "https://github.com/gutsavgupta/nvim-gemini-companion"
     },
     "nvim-lspconfig": {
-      "rev": "effe4bf"
+      "rev": "c4f67bf85b01a57e3c130352c0a0e453ab8cd5b9",
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree.lua": {
-      "rev": "776a5cd"
+      "rev": "eb33612bff2fb31f54946fb5dcadc89e905e81ec",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "17885756",
+      "rev": "4fc09bee78e91bf4ba471cdab4bf9dfa37fde51c",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "8dcb311"
+      "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
-    "plenary.nvim": [],
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
     "snacks.nvim": {
-      "rev": "fe7cfe9"
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
     }
   }
 }
