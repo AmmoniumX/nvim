@@ -1,24 +1,24 @@
 {
   "plugins": {
     "nvim-gemini-companion": {
-      "rev": "bd7489f1196afbb9d1741a5e8e544eb349be7152",
+      "rev": "72f0bc74c330b5ef327e122ae09c977946ae750f",
       "src": "https://github.com/gutsavgupta/nvim-gemini-companion"
     },
     "nvim-lspconfig": {
-      "rev": "c4f67bf85b01a57e3c130352c0a0e453ab8cd5b9",
+      "rev": "92ee7d42320edfbb81f3cad851314ab197fa324a",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree.lua": {
-      "rev": "eb33612bff2fb31f54946fb5dcadc89e905e81ec",
+      "rev": "ca8d82fff26cb12ced239713e3222f4a9dcd0da0",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "4fc09bee78e91bf4ba471cdab4bf9dfa37fde51c",
+      "rev": "ec034813775d7e2974c7551c8c34499a828963f8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-web-devicons": {
-      "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+      "rev": "803353450c374192393f5387b6a0176d0972b848",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
