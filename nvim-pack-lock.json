@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "nvim-gemini-companion": {
-      "rev": "72f0bc74c330b5ef327e122ae09c977946ae750f",
-      "src": "https://github.com/gutsavgupta/nvim-gemini-companion"
-    },
     "nvim-lspconfig": {
       "rev": "92ee7d42320edfbb81f3cad851314ab197fa324a",
       "src": "https://github.com/neovim/nvim-lspconfig"
