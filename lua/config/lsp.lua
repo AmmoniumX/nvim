@@ -89,5 +89,5 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
 -- Navigate diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.jump, { desc = 'Go to previous diagnostic' })
-vim.keymap.set('n', ']d', function() vim.diagnostic.jump(1, { float = true }) end, { desc = 'Go to next diagnostic and show float' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Go to previous diagnostic' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = 'Go to next diagnostic and show float' })
