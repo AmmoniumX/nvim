@@ -48,7 +48,7 @@ local function setup_format_autocmds()
     -- Format C++ files
     vim.api.nvim_create_autocmd("BufWritePost", {
       group = "WriteFormat",
-      pattern = { "*.cpp", "*.hpp" },
+      pattern = { "*.cpp", "*.hpp", "*.cppm" },
       callback = function()
         vim.cmd("!clang-format --style=llvm -i %")
       end,
