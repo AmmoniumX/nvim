@@ -50,7 +50,7 @@ local function setup_format_autocmds()
       group = "WriteFormat",
       pattern = { "*.cpp", "*.hpp", "*.cppm" },
       callback = function()
-        vim.cmd("!clang-format --style=llvm -i %")
+        vim.cmd("!clang-format -i %")
       end,
     })
   end
