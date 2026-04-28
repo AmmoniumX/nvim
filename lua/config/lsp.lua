@@ -36,6 +36,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end)
       end
     end
+
+    if client:supports_method('textDocument/inlineCompletion') then
+      vim.lsp.inline_completion.enable(true, { client_id = client.id })
+    end
   end,
 })
 
@@ -91,3 +95,11 @@ vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 -- Navigate diagnostics
 vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Go to previous diagnostic' })
 vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = 'Go to next diagnostic and show float' })
+
+-- Tab to apply next inline completion suggestion, or insert a tab if there are no suggestions
+vim.keymap.set({ "i", "n" }, "<tab>", function()
+  if vim.lsp.inline_completion.get() then
+    return ""
+  end
+  return "<tab>"
+end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
