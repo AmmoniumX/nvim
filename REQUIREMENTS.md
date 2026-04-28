@@ -18,4 +18,6 @@
 - `typescript`
 - `typescript-language-server`
 - `intelephense`
-
+- `copilot-language-server`
+- `tmux`
+- `claude-cli` (optional)
