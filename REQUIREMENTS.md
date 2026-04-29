@@ -19,5 +19,5 @@
 - `typescript-language-server`
 - `intelephense`
 - `copilot-language-server`
-- `tmux`
+- `tmux` (Linux) / `zellij` (Windows)
 - `claude-cli` (optional)

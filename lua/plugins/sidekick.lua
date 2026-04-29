@@ -6,7 +6,7 @@ require("nvim-treesitter-textobjects").setup()
 require("sidekick").setup({
   cli = {
     mux = {
-      backend = "tmux",
+      backend = jit.os == "Windows" and "zellij" or "tmux",
       enabled = true,
     },
     win = {
