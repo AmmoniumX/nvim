@@ -4,6 +4,7 @@ vim.pack.add({
 })
 require("nvim-treesitter-textobjects").setup()
 require("sidekick").setup({
+  nes = { enabled = false},
   cli = {
     mux = {
       backend = jit.os == "Windows" and "zellij" or "tmux",
@@ -33,9 +34,6 @@ require("sidekick").setup({
     },
   },
 })
-
--- Disable Sidekick "Next Edit Suggestions"
-vim.g.sidekick_nes = false
 
 -- Keymaps
 vim.keymap.set({ "n", "t", "i", "x" }, "<c-.>", function() require("sidekick.cli").focus() end, { desc = "Sidekick Focus" })
