@@ -84,7 +84,7 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
     vim.pack.update(names)
   else
     -- Update all packages - pass empty list as first argument
-    vim.pack.update({})
+    vim.pack.update()
   end
 end, { nargs = "*" })
 
