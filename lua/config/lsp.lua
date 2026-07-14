@@ -193,8 +193,31 @@ vim.api.nvim_create_user_command("CopilotToggle", function()
 
   if enabled then
     for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
-      client:stop()
+      vim.lsp.completion.enable(false, { client_id = client.id })
+      vim.lsp.inline_completion.enable(false, { client_id = client.id })
     end
+
+    -- If Copilot's client already died on its own (e.g. after hitting its
+    -- completion quota), the loop above finds no client to clean up, and
+    -- every buffer's inline_completion autocmds keep firing against a
+    -- stale, no-longer-resolvable client id -- crashing on every keystroke.
+    -- There's no public API to purge that per-buffer state once the client
+    -- is gone, so tear down its autocmd group directly to stop new
+    -- requests from ever being scheduled again.
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      pcall(vim.api.nvim_del_augroup_by_name, ("nvim.lsp.inline_completion:%d"):format(buf))
+    end
+
+    -- Defer the stop itself: one debounced request may already be queued
+    -- (outside the timer's control) from just before we disabled things.
+    -- Letting it land against a still-live client is harmless; it can't
+    -- reschedule itself since the autocmd group above is now gone.
+    vim.defer_fn(function()
+      for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
+        client:stop()
+      end
+    end, 300)
+
     print("Copilot LSP disabled")
   else
     print("Copilot LSP enabled")
