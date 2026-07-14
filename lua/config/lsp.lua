@@ -185,3 +185,18 @@ local function generate_cpp_enum_by_name(opts)
 end
 
 vim.api.nvim_create_user_command("GenerateEnumMappings", generate_cpp_enum_by_name, { nargs = 1 })
+
+-- Toggle Copilot LSP completions on/off
+vim.api.nvim_create_user_command("CopilotToggle", function()
+  local enabled = vim.lsp.is_enabled("copilot")
+  vim.lsp.enable("copilot", not enabled)
+
+  if enabled then
+    for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
+      client:stop()
+    end
+    print("Copilot LSP disabled")
+  else
+    print("Copilot LSP enabled")
+  end
+end, { desc = "Toggle Copilot LSP completions" })
