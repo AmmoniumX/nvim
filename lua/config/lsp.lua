@@ -156,8 +156,8 @@ local function generate_cpp_enum_by_name(opts)
 
   local out = {
     "",
-    string.format("/* Generated: %s string conversion utils */", target_name),
-    string.format("constexpr std::optional<const char*> enum_to_str(%s e) {", target_name),
+    string.format("/* auto-generated */", target_name),
+    string.format("inline constexpr const char* %s_to_str(%s e) {", target_name, target_name),
     "  switch (e) {",
   }
 
@@ -166,12 +166,12 @@ local function generate_cpp_enum_by_name(opts)
     table.insert(out, string.format('    case %s::%s: return "%s";', target_name, v, v))
   end
 
-  table.insert(out, '    default: return std::nullopt;')
+  table.insert(out, '    default: throw std::domain_error(\"enum out of bounds\");')
   table.insert(out, "  }")
   table.insert(out, "}")
   table.insert(out, "")
 
-  table.insert(out, string.format("inline constexpr std::optional<%s> str_to_enum(std::string_view sv) {", target_name))
+  table.insert(out, string.format("inline constexpr std::optional<%s> str_to_%s(std::string_view sv) {", target_name, target_name))
 
   -- Iterate through all enum values and generate if statements for string to enum conversion
   for _, v in ipairs(values) do
@@ -180,7 +180,7 @@ local function generate_cpp_enum_by_name(opts)
 
   table.insert(out, "  return std::nullopt;")
   table.insert(out, "}")
-  table.insert(out, "/* End generated utilities */")
+  table.insert(out, "/* end auto-generated */")
 
   -- Use insertion_line (which is the line after the closing brace)
   vim.api.nvim_buf_set_lines(bufnr, insertion_line, insertion_line, false, out)
