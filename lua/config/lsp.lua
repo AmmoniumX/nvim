@@ -3,10 +3,10 @@ vim.pack.add({{ src = 'https://github.com/neovim/nvim-lspconfig' }})
 require('lspconfig')
 
 -- Copilot on
-vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'copilot'})
+vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls', 'copilot'})
 
 -- Copilot off
--- vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense'})
+-- vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls'})
 
 -- Get the language server to recognize the `vim` global
 vim.lsp.config('lua_ls', {

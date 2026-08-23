@@ -20,4 +20,5 @@
 - `intelephense`
 - `copilot-language-server`
 - `tmux` (Linux) / `zellij` (Windows)
-- `claude-cli` (optional)
+- `claude-cli`
+- `bash-language-server`
