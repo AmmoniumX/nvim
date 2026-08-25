@@ -5,6 +5,11 @@ vim.pack.add({
 require("nvim-treesitter-textobjects").setup()
 require("sidekick").setup({
   nes = { enabled = false},
+  copilot = {
+    -- Suppress the "**Copilot:** Completions limit reached" notification
+    -- spam once the quota is hit; status tracking itself stays enabled.
+    status = { level = vim.log.levels.OFF },
+  },
   cli = {
     mux = {
       backend = jit.os == "Windows" and "zellij" or "tmux",
