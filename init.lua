@@ -88,6 +88,9 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
   end
 end, { nargs = "*" })
 
+-- Ctrl-Q to exit from :term
+vim.keymap.set('t', '<C-q>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
+
 -- Configure split options
 vim.opt.splitright = true
 vim.opt.splitbelow = true
