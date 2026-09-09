@@ -2,11 +2,7 @@
 vim.pack.add({{ src = 'https://github.com/neovim/nvim-lspconfig' }})
 require('lspconfig')
 
--- Copilot on
-vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls', 'copilot'})
-
--- Copilot off
--- vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls'})
+vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls', 'qmlls', 'copilot'})
 
 -- Get the language server to recognize the `vim` global
 vim.lsp.config('lua_ls', {
@@ -19,6 +15,7 @@ vim.lsp.config('lua_ls', {
   }
 })
 
+-- Enable inlay hints and completion for all LSP clients that support it
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -191,37 +188,57 @@ end
 vim.api.nvim_create_user_command("GenerateEnumMappings", generate_cpp_enum_by_name, { nargs = 1 })
 
 -- Toggle Copilot LSP completions on/off
+
+
+-- Kills the Copilot LSP client and disables its completions and inline completions.
+function Copilot_kill()
+  for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
+    vim.lsp.completion.enable(false, { client_id = client.id })
+    vim.lsp.inline_completion.enable(false, { client_id = client.id })
+  end
+
+  -- If Copilot's client already died on its own (e.g. after hitting its
+  -- completion quota), the loop above finds no client to clean up, and
+  -- every buffer's inline_completion autocmds keep firing against a
+  -- stale, no-longer-resolvable client id -- crashing on every keystroke.
+  -- There's no public API to purge that per-buffer state once the client
+  -- is gone, so tear down its autocmd group directly to stop new
+  -- requests from ever being scheduled again.
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    pcall(vim.api.nvim_del_augroup_by_name, ("nvim.lsp.inline_completion:%d"):format(buf))
+  end
+
+  -- Defer the stop itself: one debounced request may already be queued
+  -- (outside the timer's control) from just before we disabled things.
+  -- Letting it land against a still-live client is harmless; it can't
+  -- reschedule itself since the autocmd group above is now gone.
+  vim.defer_fn(function()
+    for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
+      client:stop()
+    end
+  end, 300)
+end
+
+vim.api.nvim_create_user_command("CopilotOn", function()
+  if vim.lsp.is_enabled("copilot") then
+    return
+  end
+  vim.lsp.enable("copilot")
+  print("Copilot LSP enabled")
+end, { desc = "Enable Copilot LSP completions" })
+
+vim.api.nvim_create_user_command("CopilotOff", function()
+  vim.lsp.enable("copilot", false)
+  Copilot_kill()
+  print("Copilot LSP disabled")
+end, { desc = "Disable Copilot LSP completions" })
+
 vim.api.nvim_create_user_command("CopilotToggle", function()
   local enabled = vim.lsp.is_enabled("copilot")
   vim.lsp.enable("copilot", not enabled)
 
   if enabled then
-    for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
-      vim.lsp.completion.enable(false, { client_id = client.id })
-      vim.lsp.inline_completion.enable(false, { client_id = client.id })
-    end
-
-    -- If Copilot's client already died on its own (e.g. after hitting its
-    -- completion quota), the loop above finds no client to clean up, and
-    -- every buffer's inline_completion autocmds keep firing against a
-    -- stale, no-longer-resolvable client id -- crashing on every keystroke.
-    -- There's no public API to purge that per-buffer state once the client
-    -- is gone, so tear down its autocmd group directly to stop new
-    -- requests from ever being scheduled again.
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-      pcall(vim.api.nvim_del_augroup_by_name, ("nvim.lsp.inline_completion:%d"):format(buf))
-    end
-
-    -- Defer the stop itself: one debounced request may already be queued
-    -- (outside the timer's control) from just before we disabled things.
-    -- Letting it land against a still-live client is harmless; it can't
-    -- reschedule itself since the autocmd group above is now gone.
-    vim.defer_fn(function()
-      for _, client in ipairs(vim.lsp.get_clients({ name = "copilot" })) do
-        client:stop()
-      end
-    end, 300)
-
+    Copilot_kill()
     print("Copilot LSP disabled")
   else
     print("Copilot LSP enabled")

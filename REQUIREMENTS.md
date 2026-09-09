@@ -22,3 +22,4 @@
 - `tmux` (Linux) / `zellij` (Windows)
 - `claude-cli`
 - `bash-language-server`
+- `qml-language-server`
