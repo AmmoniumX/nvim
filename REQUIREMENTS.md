@@ -23,3 +23,5 @@
 - `claude-cli`
 - `bash-language-server`
 - `qml-language-server`
+- `gopls`
+

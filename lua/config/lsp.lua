@@ -2,7 +2,7 @@
 vim.pack.add({{ src = 'https://github.com/neovim/nvim-lspconfig' }})
 require('lspconfig')
 
-vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls', 'qmlls', 'copilot'})
+vim.lsp.enable({'rust_analyzer', 'clangd', 'pyright', 'lua_ls', 'ts_ls', 'intelephense', 'bashls', 'qmlls', 'gopls', 'copilot'})
 
 -- Get the language server to recognize the `vim` global
 vim.lsp.config('lua_ls', {
