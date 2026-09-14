@@ -1,6 +1,6 @@
 vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git",
-  "https://github.com/folke/sidekick.nvim",
+  { src = "https://github.com/AmmoniumX/sidekick.nvim", version = "fix-windows-term" },
 })
 require("nvim-treesitter-textobjects").setup()
 require("sidekick").setup({
