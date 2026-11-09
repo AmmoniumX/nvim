@@ -9,6 +9,7 @@ require("plugins.snacks")
 require("plugins.nvim-tree")
 require("plugins.nvim-treesitter")
 require("plugins.sidekick")
+require("plugins.diffview")
 
 vim.opt.clipboard = ''
 vim.opt.number = true
